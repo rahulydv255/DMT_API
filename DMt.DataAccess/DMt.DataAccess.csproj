@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DMT.Domain.Core\DMT.Domain.Core.csproj" />
+    <ProjectReference Include="..\DMT.ServiceIntegration\DMT.ServiceIntegration.csproj" />
+  </ItemGroup>
+
+</Project>

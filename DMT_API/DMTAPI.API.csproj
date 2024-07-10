@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DMT.Activity\DMT.Activity.csproj" />
+    <ProjectReference Include="..\DMT.Contracts\DMT.Contracts.csproj" />
+    <ProjectReference Include="..\DMt.DataAccess\DMt.DataAccess.csproj" />
+    <ProjectReference Include="..\DMT.Domain.Core\DMT.Domain.Core.csproj" />
+    <ProjectReference Include="..\DMT.Domain\DMT.Domain.csproj" />
+    <ProjectReference Include="..\DMT.ServiceIntegration\DMT.ServiceIntegration.csproj" />
+  </ItemGroup>
+
+</Project>
