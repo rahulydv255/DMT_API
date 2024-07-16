@@ -11,8 +11,11 @@ using DMTAPI.API.Controllers.Login_Registration;
 using DMt.DataAccess.LoginRegister;
 using DMT.Domain.Login_Registration;
 using DMT.Domain.Core.Helper;
+using Microsoft.AspNetCore.Diagnostics;
 
 
+
+var MyAllowSpecificOrigins = "_myAllowSpecificOrigins";
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,6 +47,21 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+//app.UseMiddleware<ExceptionMiddleware>();
+
+//app.UseCors(builder => builder.AllowAnyHeader().AllowAnyMethod().WithOrigins("http://localhost:3000"));
+
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: MyAllowSpecificOrigins,
+                      policy =>
+                      {
+                          policy.WithOrigins("http://example.com",
+                                              "http://www.contoso.com");
+                      });
+});
+app.UseCors(MyAllowSpecificOrigins);
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

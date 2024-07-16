@@ -8,8 +8,11 @@ namespace DMT.Domain.Login_Registration
 {
    public class LoginDomainResponse
    {
-        public string Email { get; set; }
 
-        public string Password { get; set; }
-    }
-}
+            public bool IsValid { get; set; }
+
+            public string Message { get; set; }
+            
+   }
+}   
+

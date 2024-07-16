@@ -14,12 +14,12 @@ namespace DMTAPI.API.Controllers.Login_Registration
         public readonly IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse> _loginRegisterActivity;
         public readonly IActivity<LoginDomainRequest, LoginDomainResponse> _loginActivity;
 
-        public LoginRegistrationController(IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse> loginRegisterActivity)
-                                           //IActivity<LoginDomainRequest, LoginDomainResponse> loginActivity)
+        public LoginRegistrationController(IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse> loginRegisterActivity,
+                                            IActivity<LoginDomainRequest, LoginDomainResponse> loginActivity)
         {
 
             _loginRegisterActivity = loginRegisterActivity;
-            //_loginActivity = loginActivity;
+            _loginActivity = loginActivity;
 
         }
 
@@ -41,17 +41,17 @@ namespace DMTAPI.API.Controllers.Login_Registration
         }
 
         //[HttpPost]
-        //[Route("api/Login")]
-        //public LoginContractResponse Login(LoginContractRequest loginRequest)
-        //{
-        //    var response = new LoginContractResponse();
-        //    var loginDomainRequest = new LoginDomainRequest();
-        //    var loginDomainResponse = new LoginDomainResponse();
-        //    loginDomainRequest.Email = loginRequest.Email;
-        //    loginDomainRequest.Password = loginRequest.Password;
-        //    loginDomainResponse = _loginActivity.Excute(loginDomainRequest);
-        //    return response;
-        //}
+        [Route("api/Login")]
+        public LoginContractResponse Login(LoginContractRequest loginRequest)
+        {
+            var response = new LoginContractResponse();
+            var loginDomainRequest = new LoginDomainRequest();
+            var loginDomainResponse = new LoginDomainResponse();
+            loginDomainRequest.Email = loginRequest.Email;
+            loginDomainRequest.Password = loginRequest.Password;
+            loginDomainResponse = _loginActivity.Excute(loginDomainRequest);
+            return response;
+        }
 
 
 
