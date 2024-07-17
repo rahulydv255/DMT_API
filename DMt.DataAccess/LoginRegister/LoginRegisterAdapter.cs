@@ -25,7 +25,7 @@ namespace DMt.DataAccess.LoginRegister
                 {
                     connection.Open(); // Open the connection
 
-                    using (SqlCommand command = new SqlCommand("SP_REGISTER", connection))
+                    using (SqlCommand command = new SqlCommand("SP_TREGISTER", connection))
                     {
                         command.CommandType = CommandType.StoredProcedure;
 

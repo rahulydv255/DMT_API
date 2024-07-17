@@ -8,8 +8,9 @@ namespace DMT.Contracts.Login_Registration
 {
     public class LoginContractResponse
     {
-        public string Email { get; set; }
+       
+        public bool IsValid { get; set; }
 
-        public string Password { get; set; }
+        public string Message { get; set; }
     }
 }

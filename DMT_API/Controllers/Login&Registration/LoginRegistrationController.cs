@@ -9,7 +9,8 @@ using System.Diagnostics;
 
 namespace DMTAPI.API.Controllers.Login_Registration
 {
-    public class LoginRegistrationController : Controller
+    [ApiController]
+    public class LoginRegistrationController : ControllerBase
     {
         public readonly IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse> _loginRegisterActivity;
         public readonly IActivity<LoginDomainRequest, LoginDomainResponse> _loginActivity;
@@ -40,16 +41,18 @@ namespace DMTAPI.API.Controllers.Login_Registration
             return response;
         }
 
-        //[HttpPost]
+        [HttpPost]
         [Route("api/Login")]
         public LoginContractResponse Login(LoginContractRequest loginRequest)
         {
             var response = new LoginContractResponse();
             var loginDomainRequest = new LoginDomainRequest();
             var loginDomainResponse = new LoginDomainResponse();
-            loginDomainRequest.Email = loginRequest.Email;
-            loginDomainRequest.Password = loginRequest.Password;
+            //loginDomainRequest.UserEmail = loginRequest.Email;
+            //loginDomainRequest.Password = loginRequest.Password;
             loginDomainResponse = _loginActivity.Excute(loginDomainRequest);
+            response.IsValid = loginDomainResponse.IsValid;
+            response.Message = loginDomainResponse.Message;
             return response;
         }
 

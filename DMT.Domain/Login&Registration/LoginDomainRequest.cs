@@ -8,7 +8,7 @@ namespace DMT.Domain.Login_Registration
 {
     public class LoginDomainRequest
     {
-        public string Email { get; set; }
+        public string UserEmail { get; set; }
 
         public string Password { get; set; }
     }
