@@ -6,6 +6,7 @@ using DMT.Domain.DMT;
 using DMT.Domain.Login_Registration;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using System.Reflection;
 
 namespace DMTAPI.API.Controllers.Login_Registration
 {
@@ -32,10 +33,13 @@ namespace DMTAPI.API.Controllers.Login_Registration
             var loginRegisterDomainRequest = new LoginRegisterDomainRequest();
             var loginRegisterDomainResponse = new LoginRegisterDomainResponse();
             loginRegisterDomainRequest.Name = loginRegisterRequest.Name;
+            loginRegisterDomainRequest.Email = loginRegisterRequest.Email;
             loginRegisterDomainRequest.PhoneNo = loginRegisterRequest.PhoneNo;
             loginRegisterDomainRequest.Address = loginRegisterRequest.Address;
             loginRegisterDomainRequest.City = loginRegisterRequest.City;
             loginRegisterDomainRequest.password= loginRegisterRequest.Password;
+            loginRegisterDomainRequest.IS_Active= loginRegisterRequest.IS_Active;
+            loginRegisterDomainRequest.User_Type=loginRegisterRequest.User_Type;
             loginRegisterDomainResponse = _loginRegisterActivity.Excute(loginRegisterDomainRequest);
             response.Message = loginRegisterDomainResponse.Message;
             return response;
@@ -48,8 +52,8 @@ namespace DMTAPI.API.Controllers.Login_Registration
             var response = new LoginContractResponse();
             var loginDomainRequest = new LoginDomainRequest();
             var loginDomainResponse = new LoginDomainResponse();
-            //loginDomainRequest.UserEmail = loginRequest.Email;
-            //loginDomainRequest.Password = loginRequest.Password;
+            loginDomainRequest.UserEmail = loginRequest.Email;
+            loginDomainRequest.Password = loginRequest.Password;
             loginDomainResponse = _loginActivity.Excute(loginDomainRequest);
             response.IsValid = loginDomainResponse.IsValid;
             response.Message = loginDomainResponse.Message;

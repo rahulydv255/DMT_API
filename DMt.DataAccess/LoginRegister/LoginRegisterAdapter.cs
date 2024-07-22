@@ -31,10 +31,12 @@ namespace DMt.DataAccess.LoginRegister
 
                         // Add parameters
                         command.Parameters.Add(new SqlParameter("@name", input.Name));
-                        command.Parameters.Add(new SqlParameter("@phoneno", Convert.ToInt32(input.PhoneNo)));
-                        command.Parameters.Add(new SqlParameter("@city", input.City));
-                        command.Parameters.Add(new SqlParameter("@address", input.Address));
+                        command.Parameters.Add(new SqlParameter("@UserEmail", input.Email));
                         command.Parameters.Add(new SqlParameter("@password", input.password));
+                        command.Parameters.Add(new SqlParameter("@Contact_Num", input.PhoneNo));
+                        command.Parameters.Add(new SqlParameter("@is_active", input.IS_Active));
+                        command.Parameters.Add(new SqlParameter("@user_type", input.User_Type));
+
 
                         int rowsAffected = command.ExecuteNonQuery();
 

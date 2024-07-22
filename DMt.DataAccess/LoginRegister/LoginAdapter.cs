@@ -38,7 +38,7 @@ namespace DMt.DataAccess.LoginRegister
                         command.Parameters.Add(new SqlParameter("@password", input.Password));
  
 
-                        int rowsAffected = command.ExecuteNonQuery();
+                        int rowsAffected = (int)command.ExecuteScalar();
 
                         // Check if data was inserted successfully
                         if (rowsAffected > 0)
