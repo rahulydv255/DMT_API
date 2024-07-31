@@ -8,17 +8,15 @@ namespace DMT.ServiceIntegration.DataContract
 {
     public class QueryRimitterServiceContractResponse
     {
-
-        //public string name { get; set; }
         public bool Status { get; set; }
         public int ResponseCode { get; set; }
         public string? Message { get; set; }
-        public Data? data { get; set; }
+        public RemitterData? Data { get; set; }
         public bool IsSuccess { get; set; } = true; // Default to true
         public string? ErrorMessage { get; set; }
     }
 
-    public class Data
+    public class RemitterData
     {
         public string? Fname { get; set; }
         public string? Lname { get; set; }
@@ -28,5 +26,6 @@ namespace DMT.ServiceIntegration.DataContract
         public int Bank2Limit { get; set; }
         public int Bank1Limit { get; set; }
     }
-}
 
+
+}

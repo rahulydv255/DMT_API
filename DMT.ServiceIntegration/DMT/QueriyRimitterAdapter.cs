@@ -3,7 +3,6 @@ using DMT.Domain.Core.Helper;
 using DMT.Domain.Core.Interface;
 using DMT.Domain.DMT;
 using DMT.ServiceIntegration.DataContract;
-using Newtonsoft.Json;
 using RestSharp;
 using System;
 using System.Collections.Generic;
@@ -28,41 +27,17 @@ namespace DMT.ServiceIntegration.DMT
                 var client = new RestClient(options);
                 var request = new RestRequest("", Method.Post);
                 request.AddHeader("accept", "application/json");
-                request.AddHeader("Token", jwtTokenCreationPaySprint.GetToken());
+                request.AddHeader("accept", jwtTokenCreationPaySprint.GetToken());
 
                 //request.AddHeader("Token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJQQVlTUFJJTlQiLCJ0aW1lc3RhbXAiOjE2MTAwMjYzMzgsInBhcnRuZXJJZCI6IlBTMDAxIiwicHJvZHVjdCI6IldBTExFVCIsInJlcWlkIjoxNjEwMDI2MzM4fQ.buzD40O8X_41RmJ0PCYbBYx3IBlsmNb9iVmrVH9Ix64");
                 request.AddHeader("Authorisedkey", "MzNkYzllOGJmZGVhNWRkZTc1YTgzM2Y5ZDFlY2EyZTQ=");
                 request.AddJsonBody(new
                 {
                     mobile = input.mobile,
-                    bank3_flag = "NO",
-                    bank4_flag= "NO",
-                    merchantcode= "1234"
+                    bank3_flag = input.bankFlag
                 });
 
-                //var apiResponse = await client.ExecuteAsync<QueryRimitterServiceContractResponse>(request);
-                var apiResponse = await client.PostAsync(request);
-                if (apiResponse.IsSuccessful)
-                {
-                    //Deserialize the response into the response object
-                   response = JsonConvert.DeserializeObject<QueryRimitterServiceContractResponse>(apiResponse.Content);
-
-                    //Additional processing based on the response status code
-                    if (response.Status)
-                    {
-                        response.IsSuccess = true;
-                    }
-                    else
-                    {
-                        response.IsSuccess = false;
-                        response.ErrorMessage = response.Message;
-                    }
-                }
-                else
-                {
-                    response.IsSuccess = false;
-                    response.ErrorMessage = $"API call failed with status code {apiResponse.StatusCode}";
-                }
+                var apiResponse = await client.ExecuteAsync<QueryRimitterServiceContractResponse>(request);
 
 
 

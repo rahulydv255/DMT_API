@@ -9,6 +9,6 @@ namespace DMT.Contracts.DMT
     public class QueryRemiterContractRequest
     {
         public string? mobile {  get; set; }
-        //public string? bankFlag { get; set; }
+        public string? bankFlag { get; set; }
     }
 }

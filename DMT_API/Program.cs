@@ -13,8 +13,6 @@ using DMT.Domain.Login_Registration;
 using DMT.Domain.Core.Helper;
 using Microsoft.AspNetCore.Diagnostics;
 using DMT.Activity.Login_Registration;
-using DMT.Mapper;
-using DMT.Mapper.DomainToContractMapper;
 
 
 
@@ -41,15 +39,13 @@ builder.Services.AddSingleton(connectionString);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IActivityAsync<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, QueryRimiterActivity>();
+builder.Services.AddScoped<IActivity<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, QueryRimiterActivity>();
 builder.Services.AddScoped<IServiceAdapterAsync<QueryRimitterServiceContractRequest, QueryRimitterServiceContractResponse>, QueriyRimitterAdapter>();
 builder.Services.AddScoped<IDatabaseAdapter<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, SaveRemmiterAdapter>();
 builder.Services.AddScoped<IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse>, LoginRegisterActivity>();
 builder.Services.AddScoped<IDatabaseAdapter<LoginRegisterDomainRequest, LoginRegisterDomainResponse>, LoginRegisterAdapter>();
 builder.Services.AddScoped<IActivity<LoginDomainRequest, LoginDomainResponse>, LoginActivity>();
 builder.Services.AddScoped<IDatabaseAdapter<LoginDomainRequest, LoginDomainResponse>, LoginAdapter>();
-builder.Services.AddAutoMapper(typeof(AutoMapperProfile));
-builder.Services.AddAutoMapper(typeof(QueryRimitterServiceContractResponseToQueryRemiterDomainResponse));
 
 
 //builder.Services.AddScopedIActivity<LoginDomainRequest, LoginDomainResponse>, LoginRegisterAdapter>();
