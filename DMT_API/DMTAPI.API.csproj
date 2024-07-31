@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="13.0.1" />
     <PackageReference Include="Microsoft.AspNet.WebApi.Core" Version="5.3.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Cors" Version="2.2.0" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -18,6 +18,7 @@
     <ProjectReference Include="..\DMt.DataAccess\DMt.DataAccess.csproj" />
     <ProjectReference Include="..\DMT.Domain.Core\DMT.Domain.Core.csproj" />
     <ProjectReference Include="..\DMT.Domain\DMT.Domain.csproj" />
+    <ProjectReference Include="..\DMT.Mapper\DMT.Mapper.csproj" />
     <ProjectReference Include="..\DMT.ServiceIntegration\DMT.ServiceIntegration.csproj" />
   </ItemGroup>
 

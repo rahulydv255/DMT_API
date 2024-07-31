@@ -13,7 +13,7 @@ namespace DMT.Domain.Core.Helper
         {
             try
             {
-                string jwtKey = "UFMwMDEyNGQ2NTliODUzYmViM2I1OWRjMDc2YWNhMTE2M2I1NQ";
+                string jwtKey = "UFMwMDEyNGQ2NTliODUzYmViM2I1OWRjMDc2YWNhMTE2M2I1NQ==";
 
                 // Create Security key  using private key above:
                 // note that latest version of JWT using Microsoft namespace instead of System

@@ -14,5 +14,10 @@ namespace DMT.Domain.Core
             var json = JsonConvert.SerializeObject(ObjectToSerialize);
             return json;
         }
+        public static T DeserializeFromJson<T>(string input) where T : class
+        {
+            return JsonConvert.DeserializeObject<T>(input);
+        }
+
     }
 }
