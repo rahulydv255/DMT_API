@@ -10,6 +10,7 @@ namespace DMT.ServiceIntegration.DataContract
     {
         public string? mobile { get; set; }
         public string? bankFlag { get; set; } = "NO";
+   
 
     }
 }

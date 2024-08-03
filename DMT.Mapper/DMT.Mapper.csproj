@@ -10,4 +10,10 @@
     <PackageReference Include="AutoMapper" Version="13.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\DMT.Contracts\DMT.Contracts.csproj" />
+    <ProjectReference Include="..\DMT.Domain\DMT.Domain.csproj" />
+    <ProjectReference Include="..\DMT.ServiceIntegration\DMT.ServiceIntegration.csproj" />
+  </ItemGroup>
+
 </Project>

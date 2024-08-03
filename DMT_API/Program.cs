@@ -13,6 +13,11 @@ using DMT.Domain.Login_Registration;
 using DMT.Domain.Core.Helper;
 using Microsoft.AspNetCore.Diagnostics;
 using DMT.Activity.Login_Registration;
+using DMT.Activity.Generic;
+using DMt.DataAccess.Generic;
+using DMT.Domain.Generic;
+using DMT.Mapper.ContractToDomain.Dmt;
+using DMT.Mapper.DomainToContract;
 
 
 
@@ -39,13 +44,19 @@ builder.Services.AddSingleton(connectionString);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddScoped<IActivity<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, QueryRimiterActivity>();
+builder.Services.AddScoped<IActivityAsync<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, QueryRimiterActivity>();
 builder.Services.AddScoped<IServiceAdapterAsync<QueryRimitterServiceContractRequest, QueryRimitterServiceContractResponse>, QueriyRimitterAdapter>();
 builder.Services.AddScoped<IDatabaseAdapter<QueryRemiterDomainRequest, QueryRemiterDomainRespoonse>, SaveRemmiterAdapter>();
 builder.Services.AddScoped<IActivity<LoginRegisterDomainRequest, LoginRegisterDomainResponse>, LoginRegisterActivity>();
 builder.Services.AddScoped<IDatabaseAdapter<LoginRegisterDomainRequest, LoginRegisterDomainResponse>, LoginRegisterAdapter>();
 builder.Services.AddScoped<IActivity<LoginDomainRequest, LoginDomainResponse>, LoginActivity>();
 builder.Services.AddScoped<IDatabaseAdapter<LoginDomainRequest, LoginDomainResponse>, LoginAdapter>();
+builder.Services.AddScoped<IActivity<MenuDomainRequest, MenuDomainResponse>, MenuGetActivity>();
+builder.Services.AddScoped<IDatabaseAdapter<MenuDomainRequest, MenuDomainResponse>, MenuGetAdapter>();
+builder.Services.AddAutoMapper(typeof(QueryRimitterServiceContractResponseToDomainResponseMapper));
+builder.Services.AddAutoMapper(typeof(QueryRemiterDomainToContractResponseMapper));
+
+
 
 
 //builder.Services.AddScopedIActivity<LoginDomainRequest, LoginDomainResponse>, LoginRegisterAdapter>();
